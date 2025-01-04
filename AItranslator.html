@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Translator</title>
+  
+  <!-- Подключаем Bootstrap 5 (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+    }
+    .translate-area {
+      height: 180px;
+      resize: vertical;
+    }
+    .translate-card {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .btn-translate {
+      min-width: 130px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Шапка -->
+<nav class="navbar navbar-light bg-white border-bottom">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Free AI Translator</span>
+  </div>
+</nav>
+
+<!-- Контейнер -->
+<div class="container py-4">
+
+  <div class="row g-3">
+    <!-- Левая колонка -->
+    <div class="col-md-6">
+      <div class="card translate-card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Text to translate</h5>
+          <div class="mb-3">
+            <label for="fromLanguage" class="form-label">Translate from language</label>
+            <select class="form-select" id="fromLanguage">
+              <option value="auto" selected>Auto</option>
+              <option value="ru">Русский</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="it">Italiano</option>
+              <option value="pt">Português</option>
+              <option value="ar">العربية</option>
+              <option value="fa">فارسی</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="hi">हिन्दी</option>
+              <option value="bn">বাংলা</option>
+              <option value="ta">தமிழ்</option>
+              <option value="te">తెలుగు</option>
+              <option value="mr">मराठी</option>
+              <option value="ur">اردو</option>
+              <option value="th">ภาษาไทย</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="ms">Bahasa Melayu</option>
+              <option value="sw">Swahili</option>
+              <option value="af">Afrikaans</option>
+              <option value="nl">Nederlands</option>
+              <option value="sv">Svenska</option>
+              <option value="no">Norsk</option>
+              <option value="da">Dansk</option>
+              <option value="is">Íslenska</option>
+              <option value="gl">Gaeilge</option>
+              <option value="cy">Cymraeg</option>
+              <option value="gd">Gaeilge</option>
+              <option value="ga">Scots</option>
+              <option value="eu">Euskara</option>
+              <option value="gl">Galego</option>
+              <option value="ca">Català</option>
+              <option value="oc">Occitan</option>
+              <option value="ro">Romansh</option>
+              <option value="sl">Slovenčina</option>
+              <option value="cs">Čeština</option>
+              <option value="pl">Polskie</option>
+              <option value="hu">Magyar</option>
+              <option value="ro">Română</option>
+              <option value="bg">Български</option>
+              <option value="sr">Српски</option>
+              <option value="hr">Hrvatski</option>
+              <option value="sl">Slovenščina</option>
+              <option value="el">Ελληνικά</option>
+              <option value="he">עברית</option>
+              <option value="tr">Türkçе</option>
+            </select>
+          </div>
+          <div>
+            <textarea 
+              class="form-control translate-area" 
+              id="inputText" 
+              placeholder="Enter text to translate"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Правая колонка -->
+    <div class="col-md-6">
+      <div class="card translate-card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Translated text</h5>
+          <div class="mb-3">
+            <label for="toLanguage" class="form-label">Translate to language</label>
+            <select class="form-select" id="toLanguage">
+              <option value="ru">Русский</option>
+              <option value="en" selected>English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="it">Italiano</option>
+              <option value="pt">Português</option>
+              <option value="ar">العربية</option>
+              <option value="fa">فارسی</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+              <option value="hi">हिन्दी</option>
+              <option value="bn">বাংলা</option>
+              <option value="ta">தமிழ்</option>
+              <option value="te">తెలుగు</option>
+              <option value="mr">मराठी</option>
+              <option value="ur">اردو</option>
+              <option value="th">ภาษาไทย</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="ms">Bahasa Melayu</option>
+              <option value="sw">Swahili</option>
+              <option value="af">Afrikaans</option>
+              <option value="nl">Nederlands</option>
+              <option value="sv">Svenska</option>
+              <option value="no">Norsk</option>
+              <option value="da">Dansk</option>
+              <option value="is">Íslenska</option>
+              <option value="gl">Gaeilge</option>
+              <option value="cy">Cymraeg</option>
+              <option value="gd">Gaeilge</option>
+              <option value="ga">Scots</option>
+              <option value="eu">Euskara</option>
+              <option value="gl">Galego</option>
+              <option value="ca">Català</option>
+              <option value="oc">Occitan</option>
+              <option value="ro">Romansh</option>
+              <option value="sl">Slovenčina</option>
+              <option value="cs">Čeština</option>
+              <option value="pl">Polskie</option>
+              <option value="hu">Magyar</option>
+              <option value="ro">Română</option>
+              <option value="bg">Български</option>
+              <option value="sr">Српски</option>
+              <option value="hr">Hrvatski</option>
+              <option value="sl">Slovenščina</option>
+              <option value="el">Ελληνικά</option>
+              <option value="he">עברית</option>
+              <option value="tr">Türkçе</option>
+            </select>
+          </div>
+          <div>
+            <textarea 
+              class="form-control translate-area" 
+              id="outputText" 
+              placeholder="Translated text will appear here" 
+              readonly
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Кнопка перевода -->
+  <div class="text-center mt-4">
+    <button class="btn btn-primary btn-translate" id="translateBtn">Translate</button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Вставьте ваш ключ
+  const API_KEY = "AIzaSyDO7U6ZrVp0xlrym5I418oDvYZKaV2rENs";
+
+  const translateBtn = document.getElementById('translateBtn');
+  const inputText = document.getElementById('inputText');
+  const outputText = document.getElementById('outputText');
+  const fromLanguage = document.getElementById('fromLanguage');
+  const toLanguage = document.getElementById('toLanguage');
+
+  // Параметры для запроса (можно при желании вынести в отдельную переменную/файл)
+  const safetySettings = [
+    {"category": "HARM_CATEGORY_HARASSMENT",       "threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_HATE_SPEECH",      "threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT","threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_DANGEROUS_CONTENT","threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_CIVIC_INTEGRITY",  "threshold": "BLOCK_NONE"}
+  ];
+
+  // Функция, вызываемая при клике на кнопку
+  translateBtn.addEventListener('click', async () => {
+    // Берём данные из полей
+    const text = inputText.value.trim();
+    if (!text) {
+      alert('Введите текст для перевода');
+      return;
+    }
+    // Очищаем поле вывода
+    outputText.value = 'Translating...';
+
+    // Формируем тело запроса в том же виде, что в вашем Python-коде
+    // Часть полей (например, "system_instructions") можно формировать динамически
+    const data = {
+      contents: [{parts: [{text: text}]}],                // В Python: self.history (список)
+      generationConfig: { temperature: 1.0 },
+      safetySettings: safetySettings,
+      // Здесь опционально можно добавить свои "systemInstruction"
+      // Например, просим модель переводить с одного языка на другой
+      systemInstruction: {
+        role: "user",
+        parts: [{text: `Ты работаешь как простой переводчик. Получаешь текст в ${fromLanguage.value} языке. Возвращаешь дословный перевод на языке ${toLanguage.value}. Ты переводишь, даже если была ошибка в грамотности. Please translate the text what i write from ${fromLanguage.value} to ${toLanguage.value}.`}]
+      }
+    };
+
+    // Составляем URL с ключом
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+    try {
+      // Отправляем POST-запрос на Google API
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        // При ошибке статус не 2xx
+        const errData = await response.json();
+        console.error(errData);
+        throw new Error(`Ошибка HTTP: ${response.status}`);
+      }
+
+      // Если всё окей, парсим ответ
+      const jsonData = await response.json();
+      console.log(jsonData);
+
+      // Извлекаем результат
+      // По аналогии с Python: response.json()["candidates"][0]["content"]["parts"][0]["text"]
+      const result = jsonData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      outputText.value = result;
+
+    } catch (error) {
+      console.error(error);
+      outputText.value = `Ошибка: ${error.message}`;
+    }
+  });
+</script>
+</body>
+</html>
+
